@@ -26,6 +26,7 @@
     </a>
     <nav class="main-nav" id="main-nav">
       <a href="#about" data-en="About" data-ru="О нас">About</a>
+      <a href="#how-it-works" data-en="How It Works" data-ru="Как это работает">How It Works</a>
       <a href="#submit" data-en="Submit a Project" data-ru="Предложить проект">Submit a Project</a>
       <a href="#join" data-en="Join" data-ru="Вступить">Join</a>
       <a href="#partnerships" data-en="Partnerships" data-ru="Партнёрство">Partnerships</a>
@@ -35,7 +36,6 @@
       <button type="button" class="lang-btn active" data-lang="en">EN</button>
       <button type="button" class="lang-btn" data-lang="ru">RU</button>
     </div>
-    <div class="auth-area" id="auth-area"></div>
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -92,6 +92,16 @@
         </li>
       </ul>
     </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section how-it-works" id="how-it-works">
+    <div class="section-head reveal">
+      <p class="kicker" data-en="How It Works" data-ru="Как это работает">How It Works</p>
+      <h2 data-en="From idea to result, in six steps." data-ru="От идеи до результата — шесть шагов.">From idea to result, in six steps.</h2>
+      <p class="section-note" data-en="Tap or hover a step to see what happens along the way." data-ru="Нажмите или наведите курсор на этап, чтобы узнать, что происходит на каждом шаге.">Tap or hover a step to see what happens along the way.</p>
+    </div>
+    <ol class="how-steps reveal" id="how-steps"></ol>
   </section>
 
   <!-- SUBMIT A PROJECT -->
@@ -192,10 +202,6 @@
       </div>
       <button type="submit" class="btn btn-primary" data-en="Submit project" data-ru="Отправить проект">Submit project</button>
       <p class="form-status" id="submit-status" role="status"></p>
-      <p class="submit-track-hint" id="submit-track-hint">
-        <span data-en="Sign in or register to track your application status in your profile." data-ru="Войдите или зарегистрируйтесь, чтобы отслеживать статус заявки в личном кабинете.">Sign in or register to track your application status in your profile.</span>
-        <button type="button" class="link-btn" data-open-modal="modal-signin" data-en="Sign In" data-ru="Войти">Sign In</button>
-      </p>
     </form>
   </section>
 
@@ -350,132 +356,6 @@
     <p class="footer-copy" data-en="© 2026 KINDORF. All rights reserved." data-ru="© 2026 KINDORF. Все права защищены.">© 2026 KINDORF. All rights reserved.</p>
   </div>
 </footer>
-
-<!-- ===================== AUTH & PROFILE MODALS ===================== -->
-<div class="modal-backdrop" id="modal-backdrop">
-
-  <!-- SIGN IN -->
-  <div class="modal-panel" id="modal-signin" role="dialog" aria-modal="true" aria-labelledby="signin-title">
-    <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
-    <h3 class="modal-title" id="signin-title" data-en="Sign In" data-ru="Войти">Sign In</h3>
-    <p class="modal-sub" data-en="Welcome back to KINDORF." data-ru="С возвращением в KINDORF.">Welcome back to KINDORF.</p>
-    <form class="modal-form" id="signin-form">
-      <div class="form-row">
-        <label for="si-email" data-en="Email" data-ru="Email">Email</label>
-        <input type="email" id="si-email" name="email" required autocomplete="email">
-      </div>
-      <div class="form-row">
-        <label for="si-password" data-en="Password" data-ru="Пароль">Password</label>
-        <input type="password" id="si-password" name="password" required autocomplete="current-password">
-      </div>
-      <p class="modal-error" id="signin-error" role="alert"></p>
-      <button type="submit" class="btn btn-primary" data-en="Sign In" data-ru="Войти">Sign In</button>
-    </form>
-    <div class="modal-foot">
-      <button type="button" class="link-btn" data-open-modal="modal-forgot" data-en="Forgot password?" data-ru="Забыли пароль?">Forgot password?</button>
-      <span>
-        <span data-en="No account?" data-ru="Нет аккаунта?">No account?</span>
-        <button type="button" class="link-btn" data-open-modal="modal-signup" data-en="Register" data-ru="Зарегистрироваться">Register</button>
-      </span>
-    </div>
-  </div>
-
-  <!-- SIGN UP -->
-  <div class="modal-panel" id="modal-signup" role="dialog" aria-modal="true" aria-labelledby="signup-title">
-    <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
-    <h3 class="modal-title" id="signup-title" data-en="Create an Account" data-ru="Регистрация">Create an Account</h3>
-    <p class="modal-sub" data-en="Register to submit projects and track their progress." data-ru="Зарегистрируйтесь, чтобы подавать проекты и отслеживать их статус.">Register to submit projects and track their progress.</p>
-    <form class="modal-form" id="signup-form">
-      <div class="form-row">
-        <label for="su-name" data-en="Your name" data-ru="Ваше имя">Your name</label>
-        <input type="text" id="su-name" name="name" required autocomplete="name">
-      </div>
-      <div class="form-row">
-        <label for="su-email" data-en="Email" data-ru="Email">Email</label>
-        <input type="email" id="su-email" name="email" required autocomplete="email">
-      </div>
-      <div class="form-row">
-        <label for="su-password" data-en="Password" data-ru="Пароль">Password</label>
-        <input type="password" id="su-password" name="password" required minlength="6" autocomplete="new-password">
-      </div>
-      <div class="form-row">
-        <label for="su-password2" data-en="Confirm password" data-ru="Повторите пароль">Confirm password</label>
-        <input type="password" id="su-password2" name="password2" required minlength="6" autocomplete="new-password">
-      </div>
-      <p class="modal-error" id="signup-error" role="alert"></p>
-      <button type="submit" class="btn btn-primary" data-en="Register" data-ru="Зарегистрироваться">Register</button>
-    </form>
-    <div class="modal-foot">
-      <span>
-        <span data-en="Already have an account?" data-ru="Уже есть аккаунт?">Already have an account?</span>
-        <button type="button" class="link-btn" data-open-modal="modal-signin" data-en="Sign In" data-ru="Войти">Sign In</button>
-      </span>
-    </div>
-  </div>
-
-  <!-- FORGOT PASSWORD -->
-  <div class="modal-panel" id="modal-forgot" role="dialog" aria-modal="true" aria-labelledby="forgot-title">
-    <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
-    <h3 class="modal-title" id="forgot-title" data-en="Reset Password" data-ru="Восстановление пароля">Reset Password</h3>
-
-    <div id="forgot-step-request">
-      <p class="modal-sub" data-en="Enter your email and we'll send a verification code." data-ru="Введите email — мы отправим на него код подтверждения.">Enter your email and we'll send a verification code.</p>
-      <form class="modal-form" id="forgot-request-form">
-        <div class="form-row">
-          <label for="fg-email" data-en="Email" data-ru="Email">Email</label>
-          <input type="email" id="fg-email" name="email" required autocomplete="email">
-        </div>
-        <p class="modal-error" id="forgot-request-error" role="alert"></p>
-        <button type="submit" class="btn btn-primary" data-en="Send code" data-ru="Отправить код">Send code</button>
-      </form>
-    </div>
-
-    <div id="forgot-step-reset" style="display:none;">
-      <p class="modal-sub" data-en="Enter the code and choose a new password." data-ru="Введите код и придумайте новый пароль.">Enter the code and choose a new password.</p>
-      <div class="code-display" id="forgot-code-display"></div>
-      <p class="dev-note" data-en="Demo mode: no email server is connected yet, so the code is shown here directly. Connect a backend email service to deliver it by email instead." data-ru="Демо-режим: почтовый сервер ещё не подключён, поэтому код показан прямо здесь. Чтобы код приходил на email, нужно подключить серверную рассылку.">Demo mode: no email server is connected yet, so the code is shown here directly. Connect a backend email service to deliver it by email instead.</p>
-      <form class="modal-form" id="forgot-reset-form">
-        <div class="form-row">
-          <label for="fg-code" data-en="Verification code" data-ru="Код подтверждения">Verification code</label>
-          <input type="text" id="fg-code" name="code" required inputmode="numeric" maxlength="6">
-        </div>
-        <div class="form-row">
-          <label for="fg-password" data-en="New password" data-ru="Новый пароль">New password</label>
-          <input type="password" id="fg-password" name="password" required minlength="6" autocomplete="new-password">
-        </div>
-        <p class="modal-error" id="forgot-reset-error" role="alert"></p>
-        <button type="submit" class="btn btn-primary" data-en="Reset password" data-ru="Сбросить пароль">Reset password</button>
-      </form>
-    </div>
-
-    <div class="modal-foot">
-      <button type="button" class="link-btn" data-open-modal="modal-signin" data-en="Back to Sign In" data-ru="Назад ко входу">Back to Sign In</button>
-    </div>
-  </div>
-
-  <!-- PROFILE -->
-  <div class="modal-panel modal-panel-wide" id="modal-profile" role="dialog" aria-modal="true" aria-labelledby="profile-title">
-    <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
-    <div class="profile-head">
-      <div>
-        <h3 class="modal-title" id="profile-title"><span id="profile-greeting-label" data-en="Hello," data-ru="Здравствуйте,">Hello,</span> <span id="profile-name"></span></h3>
-        <p class="profile-email" id="profile-email"></p>
-      </div>
-      <button type="button" class="btn btn-ghost" id="profile-logout-btn" data-en="Log out" data-ru="Выйти">Log out</button>
-    </div>
-
-    <div class="process-block">
-      <h4 class="process-heading" data-en="How it works: what happens after you submit a project" data-ru="Как это работает: что происходит с проектом после подачи заявки">How it works: what happens after you submit a project</h4>
-      <ol class="process-steps" id="process-steps"></ol>
-    </div>
-
-    <div class="profile-projects">
-      <h4 class="process-heading" data-en="My projects" data-ru="Мои проекты">My projects</h4>
-      <div id="profile-projects-list"></div>
-    </div>
-  </div>
-
-</div>
 
 <script src="script.js"></script>
 </body>
