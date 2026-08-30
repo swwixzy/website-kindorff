@@ -166,6 +166,27 @@ button{ font-family: inherit; cursor:pointer; }
 }
 .lang-btn.active{ background: var(--forest); color: var(--white); }
 
+/* on desktop, float the language switch below the header instead
+   of sitting inline in the nav row */
+@media (min-width: 881px){
+  .lang-switch{
+    position: absolute;
+    top: 100%;
+    left: 28px;
+    margin-top: 14px;
+    box-shadow: 0 10px 24px -8px rgba(var(--line-rgb),.35);
+    z-index: 51;
+    animation: langFloat 3.6s ease-in-out infinite;
+  }
+}
+@media (min-width: 881px) and (prefers-reduced-motion: reduce){
+  .lang-switch{ animation: none; }
+}
+@keyframes langFloat{
+  0%, 100%{ transform: translateY(0); }
+  50%{ transform: translateY(-4px); }
+}
+
 .link-btn{
   background:none; border:none; padding:0;
   font: inherit; font-size:.86rem;
@@ -363,10 +384,27 @@ button{ font-family: inherit; cursor:pointer; }
 .how-step-desc p{ margin:0 0 22px; color: var(--ink-soft); font-size: .92rem; }
 .how-step.is-open .how-step-desc{ max-height: 240px; }
 
-@media (hover:hover){
+/* only auto-expand on hover for real mouse pointers — on touch
+   screens (hover:hover) can misfire and the :hover state gets
+   "stuck" after a tap, so this stays JS/tap-only on phones */
+@media (hover:hover) and (pointer:fine){
   .how-step:hover{ border-color: rgba(var(--line-rgb),.3); }
   .how-step:hover .how-step-desc{ max-height: 240px; }
   .how-step:hover .how-step-icon::after{ transform: translateX(-50%) scaleY(0); }
+}
+
+@media (max-width: 560px){
+  .how-step-toggle{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    padding: 22px 20px;
+  }
+  .how-step-num{ width:auto; }
+  .how-step-icon{ display:none; }
+  .how-step-desc{ padding: 0 20px; text-align:center; }
+  .how-step-desc p{ margin: 0 auto 20px; }
 }
 
 /* ---------- info blocks (who can submit / what we support / what you get) ---------- */
