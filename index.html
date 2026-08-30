@@ -25,7 +25,6 @@
     </a>
     <nav class="main-nav" id="main-nav">
       <a href="#about" data-en="About" data-ru="О нас">About</a>
-      <a href="#projects" data-en="Projects" data-ru="Проекты">Projects</a>
       <a href="#submit" data-en="Submit a Project" data-ru="Предложить проект">Submit a Project</a>
       <a href="#join" data-en="Join" data-ru="Вступить">Join</a>
       <a href="#partnerships" data-en="Partnerships" data-ru="Партнёрство">Partnerships</a>
@@ -35,6 +34,7 @@
       <button type="button" class="lang-btn active" data-lang="en">EN</button>
       <button type="button" class="lang-btn" data-lang="ru">RU</button>
     </div>
+    <div class="auth-area" id="auth-area"></div>
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -51,10 +51,9 @@
         <span data-en="You bring the idea." data-ru="Вы приносите идею.">You bring the idea.</span>
         <span class="accent" data-en="We help it grow." data-ru="Мы помогаем ей расти.">We help it grow.</span>
       </h1>
-      <p class="hero-sub" data-en="KINDORF connects people with real projects to the people, teams, and partners who can make them happen — through our IT, SMM, Partnerships, International Relations, and other departments." data-ru="KINDORF соединяет людей с реальными проектами с людьми, командами и партнёрами, которые помогут их реализовать — через наши подразделения IT, SMM, Partnerships, International Relations и другие.">KINDORF connects people with real projects to the people, teams, and partners who can make them happen — through our IT, SMM, Partnerships, International Relations, and other departments.</p>
+      <p class="hero-sub" data-en="KINDORF connects people with real projects to the people, teams, and partners who can make them happen — through our Management, IT, SMM / Media, Partnerships, and other departments." data-ru="KINDORF соединяет людей с реальными проектами с людьми, командами и партнёрами, которые помогут их реализовать — через наши подразделения Management, IT, SMM / Media, Partnerships и другие.">KINDORF connects people with real projects to the people, teams, and partners who can make them happen — through our Management, IT, SMM / Media, Partnerships, and other departments.</p>
       <div class="hero-actions">
         <a href="#submit" class="btn btn-primary" data-en="Submit a project" data-ru="Предложить проект">Submit a project</a>
-        <a href="#projects" class="btn btn-ghost" data-en="See projects" data-ru="Смотреть проекты">See projects</a>
       </div>
     </div>
     <div class="hero-tagline reveal">
@@ -75,7 +74,7 @@
     <div class="about-grid">
       <div class="about-copy reveal">
         <p data-en="A person comes to us with an idea. We review the project, and if we take it on, KINDORF connects to its realization and provides the help it needs through our departments." data-ru="Человек приходит к нам со своей идеей. Мы рассматриваем проект, и если принимаем его, KINDORF подключается к его реализации и предоставляет необходимую помощь через наши подразделения.">A person comes to us with an idea. We review the project, and if we take it on, KINDORF connects to its realization and provides the help it needs through our departments.</p>
-        <p data-en="Our permanent departments — IT, SMM, Partnerships, International Relations, and others — don't become a dedicated team for every single project. Instead, they connect to projects as needed: a study that needs to be published reaches out to the relevant department; a project that needs an international partner reaches International Relations or Partnerships." data-ru="Наши постоянные подразделения — IT, SMM, Partnerships, International Relations и другие — не становятся отдельной командой для каждого проекта. Вместо этого они подключаются к проектам по мере необходимости: если проекту нужна публикация исследования — обращаются в соответствующее подразделение; если нужен международный партнёр — в International Relations или Partnerships.">Our permanent departments — IT, SMM, Partnerships, International Relations, and others — don't become a dedicated team for every single project. Instead, they connect to projects as needed: a study that needs to be published reaches out to the relevant department; a project that needs an international partner reaches International Relations or Partnerships.</p>
+        <p data-en="Our permanent departments — Management, Project Management, Research / Analytics, SMM / Media, Partnerships, IT / Technical, Design, Finance, and Legal — don't become a dedicated team for every single project. Instead, they connect to projects as needed: a study that needs to be published reaches out to Research / Analytics; a project that needs an international partner reaches Partnerships." data-ru="Наши постоянные подразделения — Management, Project Management, Research / Analytics, SMM / Media, Partnerships, IT / Technical, Design, Finance и Legal — не становятся отдельной командой для каждого проекта. Вместо этого они подключаются к проектам по мере необходимости: если проекту нужна публикация исследования — обращаются в Research / Analytics; если нужен международный партнёр — в Partnerships.">Our permanent departments — Management, Project Management, Research / Analytics, SMM / Media, Partnerships, IT / Technical, Design, Finance, and Legal — don't become a dedicated team for every single project. Instead, they connect to projects as needed: a study that needs to be published reaches out to Research / Analytics; a project that needs an international partner reaches Partnerships.</p>
       </div>
       <ul class="about-pillars reveal">
         <li>
@@ -94,60 +93,61 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section class="section projects" id="projects">
-    <div class="section-head reveal">
-      <p class="kicker" data-en="Projects" data-ru="Проекты">Projects</p>
-      <h2 data-en="What's in motion." data-ru="Что в работе.">What's in motion.</h2>
-      <p class="section-note" data-en="A public record of projects that are or have been in work with us. Some internal details stay private to each project." data-ru="Публичный список проектов, которые находятся или находились в работе с нами. Часть внутренней информации по каждому проекту остаётся закрытой.">A public record of projects that are or have been in work with us. Some internal details stay private to each project.</p>
-    </div>
-
-    <div class="project-grid">
-      <article class="project-card reveal">
-        <div class="project-status status-active" data-en="Active" data-ru="В работе">Active</div>
-        <h3 data-en="Riverline Youth Atlas" data-ru="Riverline Youth Atlas">Riverline Youth Atlas</h3>
-        <p class="project-desc" data-en="A mapping project documenting youth-led community spaces along the Ural river basin." data-ru="Картографический проект, документирующий молодёжные общественные пространства вдоль бассейна реки Урал.">A mapping project documenting youth-led community spaces along the Ural river basin.</p>
-        <dl class="project-meta">
-          <div><dt data-en="Owner" data-ru="Owner">Owner</dt><dd>A. Serik</dd></div>
-          <div><dt data-en="Geography" data-ru="География">Geography</dt><dd data-en="Kazakhstan" data-ru="Казахстан">Kazakhstan</dd></div>
-          <div><dt data-en="Direction" data-ru="Направление">Direction</dt><dd data-en="Community / Research" data-ru="Community / Research">Community / Research</dd></div>
-        </dl>
-        <a class="project-more" href="#" data-en="View details →" data-ru="Подробнее →">View details →</a>
-      </article>
-
-      <article class="project-card reveal">
-        <div class="project-status status-review" data-en="In review" data-ru="На рассмотрении">In review</div>
-        <h3 data-en="Open Grant Compass" data-ru="Open Grant Compass">Open Grant Compass</h3>
-        <p class="project-desc" data-en="A directory tool helping early-stage researchers find and apply for cross-border funding." data-ru="Инструмент-каталог, который помогает начинающим исследователям находить международные гранты и подавать заявки.">A directory tool helping early-stage researchers find and apply for cross-border funding.</p>
-        <dl class="project-meta">
-          <div><dt data-en="Owner" data-ru="Owner">Owner</dt><dd>L. Fischer</dd></div>
-          <div><dt data-en="Geography" data-ru="География">Geography</dt><dd data-en="Germany / Remote" data-ru="Германия / удалённо">Germany / Remote</dd></div>
-          <div><dt data-en="Direction" data-ru="Направление">Direction</dt><dd data-en="EdTech / Partnerships" data-ru="EdTech / Partnerships">EdTech / Partnerships</dd></div>
-        </dl>
-        <a class="project-more" href="#" data-en="View details →" data-ru="Подробнее →">View details →</a>
-      </article>
-
-      <article class="project-card reveal">
-        <div class="project-status status-complete" data-en="Completed" data-ru="Завершён">Completed</div>
-        <h3 data-en="Field Notes: Migration & Memory" data-ru="Field Notes: Migration & Memory">Field Notes: Migration &amp; Memory</h3>
-        <p class="project-desc" data-en="An oral history study published in partnership with two regional universities." data-ru="Исследование устной истории, опубликованное в партнёрстве с двумя региональными университетами.">An oral history study published in partnership with two regional universities.</p>
-        <dl class="project-meta">
-          <div><dt data-en="Owner" data-ru="Owner">Owner</dt><dd>N. Ibrahim</dd></div>
-          <div><dt data-en="Geography" data-ru="География">Geography</dt><dd data-en="Central Asia" data-ru="Центральная Азия">Central Asia</dd></div>
-          <div><dt data-en="Direction" data-ru="Направление">Direction</dt><dd data-en="Research / Publishing" data-ru="Research / Publishing">Research / Publishing</dd></div>
-        </dl>
-        <a class="project-more" href="#" data-en="View details →" data-ru="Подробнее →">View details →</a>
-      </article>
-    </div>
-    <p class="project-disclaimer reveal" data-en="Sample entries shown for layout — connect your project database to populate this section live." data-ru="Показаны примеры для демонстрации макета — подключите базу проектов, чтобы наполнить раздел реальными данными.">Sample entries shown for layout — connect your project database to populate this section live.</p>
-  </section>
-
   <!-- SUBMIT A PROJECT -->
   <section class="section submit" id="submit">
     <div class="section-head reveal">
       <p class="kicker" data-en="Submit a Project" data-ru="Предложить проект">Submit a Project</p>
       <h2 data-en="Tell us what you're building." data-ru="Расскажите, что вы создаёте.">Tell us what you're building.</h2>
       <p class="section-note" data-en="If we take it on, we'll connect you with a Project Manager. If not, you'll hear back either way." data-ru="Если мы примем проект, мы свяжем вас с Project Manager. Если нет — вы всё равно получите ответ.">If we take it on, we'll connect you with a Project Manager. If not, you'll hear back either way.</p>
+    </div>
+
+    <div class="owner-banner reveal">
+      <p data-en="The project stays yours." data-ru="Проект остаётся вашим." class="owner-banner-title">The project stays yours.</p>
+      <p data-en="You remain the Project Owner, while KINDORF provides the team, expertise, and support needed to grow and realize the idea." data-ru="Вы остаётесь Project Owner, а KINDORF предоставляет команду, экспертизу и поддержку, необходимые для развития и реализации идеи.">You remain the Project Owner, while KINDORF provides the team, expertise, and support needed to grow and realize the idea.</p>
+    </div>
+
+    <div class="info-blocks reveal">
+      <div class="info-block">
+        <h3 data-en="Who can submit a project" data-ru="Кто может подать проект">Who can submit a project</h3>
+        <ul>
+          <li data-en="Individuals" data-ru="Отдельные люди">Individuals</li>
+          <li data-en="Students" data-ru="Студенты">Students</li>
+          <li data-en="Young professionals" data-ru="Молодые специалисты">Young professionals</li>
+          <li data-en="Researchers" data-ru="Исследователи">Researchers</li>
+          <li data-en="Entrepreneurs" data-ru="Предприниматели">Entrepreneurs</li>
+          <li data-en="Public initiatives" data-ru="Общественные инициативы">Public initiatives</li>
+          <li data-en="NGOs" data-ru="НКО">NGOs</li>
+          <li data-en="Teams" data-ru="Команды">Teams</li>
+          <li data-en="International organizations" data-ru="Международные организации">International organizations</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <h3 data-en="What we support" data-ru="Что мы поддерживаем">What we support</h3>
+        <ul>
+          <li data-en="Social projects" data-ru="Социальные проекты">Social projects</li>
+          <li data-en="Education" data-ru="Образование">Education</li>
+          <li data-en="Research" data-ru="Исследования">Research</li>
+          <li data-en="Business &amp; entrepreneurship" data-ru="Бизнес и предпринимательство">Business &amp; entrepreneurship</li>
+          <li data-en="Technology" data-ru="Технологии">Technology</li>
+          <li data-en="Culture &amp; art" data-ru="Культура и искусство">Culture &amp; art</li>
+          <li data-en="Ecology" data-ru="Экология">Ecology</li>
+          <li data-en="Community development" data-ru="Развитие сообществ">Community development</li>
+          <li data-en="International initiatives" data-ru="Международные инициативы">International initiatives</li>
+        </ul>
+        <p class="info-note" data-en="Don't see your field on this list? Send us your idea anyway — we consider projects outside these categories too." data-ru="Не нашли свою сферу в этом списке? Всё равно отправьте нам идею — мы рассматриваем проекты и за пределами этих категорий.">Don't see your field on this list? Send us your idea anyway — we consider projects outside these categories too.</p>
+      </div>
+
+      <div class="info-block">
+        <h3 data-en="What a project owner gets" data-ru="Что получает автор проекта">What a project owner gets</h3>
+        <ul>
+          <li data-en="Help with planning and organization" data-ru="Помощь в планировании и организации">Help with planning and organization</li>
+          <li data-en="Access to specialists across different professional fields" data-ru="Доступ к специалистам из разных профессиональных областей">Access to specialists across different professional fields</li>
+          <li data-en="The ability to work with international teams and specialists" data-ru="Возможность работать с международными командами и специалистами">The ability to work with international teams and specialists</li>
+          <li data-en="You don't have to try to do everything yourself — we help put together the team and the process" data-ru="Не нужно пытаться реализовать всё самостоятельно — мы помогаем организовать команду и сам процесс">You don't have to try to do everything yourself — we help put together the team and the process</li>
+        </ul>
+        <p class="info-note highlight" data-en="We keep our support model free." data-ru="Мы сохраняем нашу модель поддержки бесплатной.">We keep our support model free.</p>
+      </div>
     </div>
 
     <form class="kindorf-form reveal" id="submit-form">
@@ -191,6 +191,10 @@
       </div>
       <button type="submit" class="btn btn-primary" data-en="Submit project" data-ru="Отправить проект">Submit project</button>
       <p class="form-status" id="submit-status" role="status"></p>
+      <p class="submit-track-hint" id="submit-track-hint">
+        <span data-en="Sign in or register to track your application status in your profile." data-ru="Войдите или зарегистрируйтесь, чтобы отслеживать статус заявки в личном кабинете.">Sign in or register to track your application status in your profile.</span>
+        <button type="button" class="link-btn" data-open-modal="modal-signin" data-en="Sign In" data-ru="Войти">Sign In</button>
+      </p>
     </form>
   </section>
 
@@ -213,8 +217,35 @@
         </div>
       </div>
       <div class="form-row">
-        <label for="j-dept" data-en="Department you're interested in" data-ru="Подразделение, которое вас интересует">Department you're interested in</label>
-        <input type="text" id="j-dept" name="department" placeholder="IT, Marketing &amp; Communications, Law, Research &amp; Analytics…">
+        <label data-en="Department you're interested in" data-ru="Подразделение, которое вас интересует">Department you're interested in</label>
+        <div class="dept-select" role="radiogroup" aria-label="Department">
+          <input class="sr-only" type="radio" name="department" id="dept-management" value="Management" required>
+          <label class="dept-chip" for="dept-management" data-en="Management" data-ru="Management">Management</label>
+
+          <input class="sr-only" type="radio" name="department" id="dept-pm" value="Project Management">
+          <label class="dept-chip" for="dept-pm" data-en="Project Management" data-ru="Project Management">Project Management</label>
+
+          <input class="sr-only" type="radio" name="department" id="dept-research" value="Research / Analytics">
+          <label class="dept-chip" for="dept-research" data-en="Research / Analytics" data-ru="Research / Analytics">Research / Analytics</label>
+
+          <input class="sr-only" type="radio" name="department" id="dept-smm" value="SMM / Media">
+          <label class="dept-chip" for="dept-smm" data-en="SMM / Media" data-ru="SMM / Media">SMM / Media</label>
+
+          <input class="sr-only" type="radio" name="department" id="dept-partnerships" value="Partnerships">
+          <label class="dept-chip" for="dept-partnerships" data-en="Partnerships" data-ru="Partnerships">Partnerships</label>
+
+          <input class="sr-only" type="radio" name="department" id="dept-it" value="IT / Technical">
+          <label class="dept-chip" for="dept-it" data-en="IT / Technical" data-ru="IT / Technical">IT / Technical</label>
+
+          <input class="sr-only" type="radio" name="department" id="dept-design" value="Design">
+          <label class="dept-chip" for="dept-design" data-en="Design" data-ru="Design">Design</label>
+
+          <input class="sr-only" type="radio" name="department" id="dept-finance" value="Finance">
+          <label class="dept-chip" for="dept-finance" data-en="Finance" data-ru="Finance">Finance</label>
+
+          <input class="sr-only" type="radio" name="department" id="dept-legal" value="Legal">
+          <label class="dept-chip" for="dept-legal" data-en="Legal" data-ru="Legal">Legal</label>
+        </div>
       </div>
       <div class="form-row">
         <label for="j-note" data-en="Why you'd like to join" data-ru="Почему вы хотите присоединиться">Why you'd like to join</label>
@@ -260,43 +291,48 @@
     </div>
     <div class="dept-grid">
       <div class="dept-card reveal">
-        <h3 data-en="International Relations &amp; Partnership" data-ru="International Relations &amp; Partnership">International Relations &amp; Partnership</h3>
-        <p data-en="Connects projects to international partners, contexts, and collaborations." data-ru="Связывает проекты с международными партнёрами, контекстами и совместными инициативами.">Connects projects to international partners, contexts, and collaborations.</p>
+        <h3 data-en="Management" data-ru="Management">Management</h3>
+        <p data-en="Oversees KINDORF as an organization and supports the people behind every project." data-ru="Управляет KINDORF как организацией и поддерживает людей, стоящих за каждым проектом.">Oversees KINDORF as an organization and supports the people behind every project.</p>
         <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
       </div>
       <div class="dept-card reveal">
-        <h3 data-en="Research &amp; Analytics" data-ru="Research &amp; Analytics">Research &amp; Analytics</h3>
-        <p data-en="Researches and analyzes data to support project decisions." data-ru="Проводит исследования и анализ данных для поддержки решений по проектам.">Researches and analyzes data to support project decisions.</p>
-        <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
-      </div>
-      <div class="dept-card reveal">
-        <h3 data-en="Management &amp; HR" data-ru="Management &amp; HR">Management &amp; HR</h3>
-        <p data-en="Builds and supports the team behind every project." data-ru="Формирует и поддерживает команду, стоящую за каждым проектом.">Builds and supports the team behind every project.</p>
-        <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
-      </div>
-      <div class="dept-card reveal">
-        <h3 data-en="Project &amp; Business Management" data-ru="Project &amp; Business Management">Project &amp; Business Management</h3>
+        <h3 data-en="Project Management" data-ru="Project Management">Project Management</h3>
         <p data-en="Plans, coordinates, and drives projects from idea to result." data-ru="Планирует, координирует и ведёт проекты от идеи до результата.">Plans, coordinates, and drives projects from idea to result.</p>
         <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
       </div>
       <div class="dept-card reveal">
-        <h3 data-en="Marketing &amp; Communications" data-ru="Marketing &amp; Communications">Marketing &amp; Communications</h3>
+        <h3 data-en="Research / Analytics" data-ru="Research / Analytics">Research / Analytics</h3>
+        <p data-en="Researches and analyzes data to support project decisions." data-ru="Проводит исследования и анализ данных для поддержки решений по проектам.">Researches and analyzes data to support project decisions.</p>
+        <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
+      </div>
+      <div class="dept-card reveal">
+        <h3 data-en="SMM / Media" data-ru="SMM / Media">SMM / Media</h3>
         <p data-en="Shapes how projects are told and shared across channels." data-ru="Формирует то, как проекты рассказываются и распространяются в каналах.">Shapes how projects are told and shared across channels.</p>
         <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
       </div>
       <div class="dept-card reveal">
-        <h3 data-en="Linguistics &amp; Philology" data-ru="Linguistics &amp; Philology">Linguistics &amp; Philology</h3>
-        <p data-en="Handles translation, editing, and language quality across projects." data-ru="Занимается переводом, редактурой и языковым качеством проектов.">Handles translation, editing, and language quality across projects.</p>
+        <h3 data-en="Partnerships" data-ru="Partnerships">Partnerships</h3>
+        <p data-en="Connects projects to partners, organizations, and international collaborations." data-ru="Связывает проекты с партнёрами, организациями и международными коллаборациями.">Connects projects to partners, organizations, and international collaborations.</p>
         <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
       </div>
       <div class="dept-card reveal">
-        <h3 data-en="Law" data-ru="Law">Law</h3>
-        <p data-en="Reviews legal, contractual, and compliance matters for projects." data-ru="Занимается юридическими, договорными и нормативными вопросами проектов.">Reviews legal, contractual, and compliance matters for projects.</p>
-        <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
-      </div>
-      <div class="dept-card reveal">
-        <h3 data-en="IT" data-ru="IT">IT</h3>
+        <h3 data-en="IT / Technical" data-ru="IT / Technical">IT / Technical</h3>
         <p data-en="Builds and maintains the tools projects run on — sites, apps, data." data-ru="Создаёт и поддерживает инструменты, на которых работают проекты — сайты, приложения, данные.">Builds and maintains the tools projects run on — sites, apps, data.</p>
+        <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
+      </div>
+      <div class="dept-card reveal">
+        <h3 data-en="Design" data-ru="Design">Design</h3>
+        <p data-en="Shapes the visual identity and materials behind projects and KINDORF itself." data-ru="Формирует визуальную идентичность и материалы проектов и самой KINDORF.">Shapes the visual identity and materials behind projects and KINDORF itself.</p>
+        <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
+      </div>
+      <div class="dept-card reveal">
+        <h3 data-en="Finance" data-ru="Finance">Finance</h3>
+        <p data-en="Handles budgeting and financial planning for projects and the organization." data-ru="Занимается бюджетированием и финансовым планированием проектов и организации.">Handles budgeting and financial planning for projects and the organization.</p>
+        <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
+      </div>
+      <div class="dept-card reveal">
+        <h3 data-en="Legal" data-ru="Legal">Legal</h3>
+        <p data-en="Reviews legal, contractual, and compliance matters for projects." data-ru="Занимается юридическими, договорными и нормативными вопросами проектов.">Reviews legal, contractual, and compliance matters for projects.</p>
         <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
       </div>
     </div>
@@ -313,6 +349,132 @@
     <p class="footer-copy" data-en="© 2026 KINDORF. All rights reserved." data-ru="© 2026 KINDORF. Все права защищены.">© 2026 KINDORF. All rights reserved.</p>
   </div>
 </footer>
+
+<!-- ===================== AUTH & PROFILE MODALS ===================== -->
+<div class="modal-backdrop" id="modal-backdrop">
+
+  <!-- SIGN IN -->
+  <div class="modal-panel" id="modal-signin" role="dialog" aria-modal="true" aria-labelledby="signin-title">
+    <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
+    <h3 class="modal-title" id="signin-title" data-en="Sign In" data-ru="Войти">Sign In</h3>
+    <p class="modal-sub" data-en="Welcome back to KINDORF." data-ru="С возвращением в KINDORF.">Welcome back to KINDORF.</p>
+    <form class="modal-form" id="signin-form">
+      <div class="form-row">
+        <label for="si-email" data-en="Email" data-ru="Email">Email</label>
+        <input type="email" id="si-email" name="email" required autocomplete="email">
+      </div>
+      <div class="form-row">
+        <label for="si-password" data-en="Password" data-ru="Пароль">Password</label>
+        <input type="password" id="si-password" name="password" required autocomplete="current-password">
+      </div>
+      <p class="modal-error" id="signin-error" role="alert"></p>
+      <button type="submit" class="btn btn-primary" data-en="Sign In" data-ru="Войти">Sign In</button>
+    </form>
+    <div class="modal-foot">
+      <button type="button" class="link-btn" data-open-modal="modal-forgot" data-en="Forgot password?" data-ru="Забыли пароль?">Forgot password?</button>
+      <span>
+        <span data-en="No account?" data-ru="Нет аккаунта?">No account?</span>
+        <button type="button" class="link-btn" data-open-modal="modal-signup" data-en="Register" data-ru="Зарегистрироваться">Register</button>
+      </span>
+    </div>
+  </div>
+
+  <!-- SIGN UP -->
+  <div class="modal-panel" id="modal-signup" role="dialog" aria-modal="true" aria-labelledby="signup-title">
+    <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
+    <h3 class="modal-title" id="signup-title" data-en="Create an Account" data-ru="Регистрация">Create an Account</h3>
+    <p class="modal-sub" data-en="Register to submit projects and track their progress." data-ru="Зарегистрируйтесь, чтобы подавать проекты и отслеживать их статус.">Register to submit projects and track their progress.</p>
+    <form class="modal-form" id="signup-form">
+      <div class="form-row">
+        <label for="su-name" data-en="Your name" data-ru="Ваше имя">Your name</label>
+        <input type="text" id="su-name" name="name" required autocomplete="name">
+      </div>
+      <div class="form-row">
+        <label for="su-email" data-en="Email" data-ru="Email">Email</label>
+        <input type="email" id="su-email" name="email" required autocomplete="email">
+      </div>
+      <div class="form-row">
+        <label for="su-password" data-en="Password" data-ru="Пароль">Password</label>
+        <input type="password" id="su-password" name="password" required minlength="6" autocomplete="new-password">
+      </div>
+      <div class="form-row">
+        <label for="su-password2" data-en="Confirm password" data-ru="Повторите пароль">Confirm password</label>
+        <input type="password" id="su-password2" name="password2" required minlength="6" autocomplete="new-password">
+      </div>
+      <p class="modal-error" id="signup-error" role="alert"></p>
+      <button type="submit" class="btn btn-primary" data-en="Register" data-ru="Зарегистрироваться">Register</button>
+    </form>
+    <div class="modal-foot">
+      <span>
+        <span data-en="Already have an account?" data-ru="Уже есть аккаунт?">Already have an account?</span>
+        <button type="button" class="link-btn" data-open-modal="modal-signin" data-en="Sign In" data-ru="Войти">Sign In</button>
+      </span>
+    </div>
+  </div>
+
+  <!-- FORGOT PASSWORD -->
+  <div class="modal-panel" id="modal-forgot" role="dialog" aria-modal="true" aria-labelledby="forgot-title">
+    <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
+    <h3 class="modal-title" id="forgot-title" data-en="Reset Password" data-ru="Восстановление пароля">Reset Password</h3>
+
+    <div id="forgot-step-request">
+      <p class="modal-sub" data-en="Enter your email and we'll send a verification code." data-ru="Введите email — мы отправим на него код подтверждения.">Enter your email and we'll send a verification code.</p>
+      <form class="modal-form" id="forgot-request-form">
+        <div class="form-row">
+          <label for="fg-email" data-en="Email" data-ru="Email">Email</label>
+          <input type="email" id="fg-email" name="email" required autocomplete="email">
+        </div>
+        <p class="modal-error" id="forgot-request-error" role="alert"></p>
+        <button type="submit" class="btn btn-primary" data-en="Send code" data-ru="Отправить код">Send code</button>
+      </form>
+    </div>
+
+    <div id="forgot-step-reset" style="display:none;">
+      <p class="modal-sub" data-en="Enter the code and choose a new password." data-ru="Введите код и придумайте новый пароль.">Enter the code and choose a new password.</p>
+      <div class="code-display" id="forgot-code-display"></div>
+      <p class="dev-note" data-en="Demo mode: no email server is connected yet, so the code is shown here directly. Connect a backend email service to deliver it by email instead." data-ru="Демо-режим: почтовый сервер ещё не подключён, поэтому код показан прямо здесь. Чтобы код приходил на email, нужно подключить серверную рассылку.">Demo mode: no email server is connected yet, so the code is shown here directly. Connect a backend email service to deliver it by email instead.</p>
+      <form class="modal-form" id="forgot-reset-form">
+        <div class="form-row">
+          <label for="fg-code" data-en="Verification code" data-ru="Код подтверждения">Verification code</label>
+          <input type="text" id="fg-code" name="code" required inputmode="numeric" maxlength="6">
+        </div>
+        <div class="form-row">
+          <label for="fg-password" data-en="New password" data-ru="Новый пароль">New password</label>
+          <input type="password" id="fg-password" name="password" required minlength="6" autocomplete="new-password">
+        </div>
+        <p class="modal-error" id="forgot-reset-error" role="alert"></p>
+        <button type="submit" class="btn btn-primary" data-en="Reset password" data-ru="Сбросить пароль">Reset password</button>
+      </form>
+    </div>
+
+    <div class="modal-foot">
+      <button type="button" class="link-btn" data-open-modal="modal-signin" data-en="Back to Sign In" data-ru="Назад ко входу">Back to Sign In</button>
+    </div>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="modal-panel modal-panel-wide" id="modal-profile" role="dialog" aria-modal="true" aria-labelledby="profile-title">
+    <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
+    <div class="profile-head">
+      <div>
+        <h3 class="modal-title" id="profile-title"><span id="profile-greeting-label" data-en="Hello," data-ru="Здравствуйте,">Hello,</span> <span id="profile-name"></span></h3>
+        <p class="profile-email" id="profile-email"></p>
+      </div>
+      <button type="button" class="btn btn-ghost" id="profile-logout-btn" data-en="Log out" data-ru="Выйти">Log out</button>
+    </div>
+
+    <div class="process-block">
+      <h4 class="process-heading" data-en="How it works: what happens after you submit a project" data-ru="Как это работает: что происходит с проектом после подачи заявки">How it works: what happens after you submit a project</h4>
+      <ol class="process-steps" id="process-steps"></ol>
+    </div>
+
+    <div class="profile-projects">
+      <h4 class="process-heading" data-en="My projects" data-ru="Мои проекты">My projects</h4>
+      <div id="profile-projects-list"></div>
+    </div>
+  </div>
+
+</div>
 
 <script src="script.js"></script>
 </body>
