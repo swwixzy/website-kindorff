@@ -219,7 +219,7 @@ button{ font-family: inherit; cursor:pointer; }
   }
   .main-nav.open{ display:flex; }
   .nav-toggle{ display:flex; }
-  .lang-switch{ z-index: 52; }
+  .lang-switch{ z-index: 40; }
 }
 
 @media (max-width: 480px){
@@ -229,7 +229,7 @@ button{ font-family: inherit; cursor:pointer; }
   .brand-mark{ width:28px; height:28px; }
   .brand-word{ font-size: .82rem; letter-spacing: .02em; }
   .lang-switch{ flex-shrink:0; left: 14px; margin-top: 10px; }
-  .lang-btn{ padding: 4px 7px; font-size:.62rem; min-width: 30px; }
+  .lang-btn{ padding: 7px 13px; font-size:.78rem; min-width: 38px; }
   .btn-small{ padding: 6px 10px; font-size:.72rem; min-width: 72px; }
   .auth-avatar{ width:24px; height:24px; font-size:.7rem; }
   .nav-toggle{ padding: 5px 2px 5px 6px; gap:4px; }
