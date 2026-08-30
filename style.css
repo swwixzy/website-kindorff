@@ -1,7 +1,7 @@
 /* ===========================================================
-   KINDORF — design tokens
+   KINDORF вЂ” design tokens
    Palette: deep forest / sage / cream+white / ink
-   /Display type: Fraunces (organic serif, echoes the logo's K)
+   Display type: Fraunces (organic serif, echoes the logo's K)
    Body type: Work Sans
 =========================================================== */
 
@@ -149,6 +149,7 @@ button{ font-family: inherit; cursor:pointer; }
 .lang-btn{
   border:none; background:transparent; color:var(--forest-deep);
   font-size:.72rem; letter-spacing:.06em; padding:6px 12px;
+  min-width: 42px; text-align:center; white-space:nowrap;
   transition: background .2s var(--ease), color .2s var(--ease);
 }
 .lang-btn.active{ background: var(--forest); color: var(--white); }
@@ -163,7 +164,7 @@ button{ font-family: inherit; cursor:pointer; }
 
 /* ---------- header auth area ---------- */
 .auth-area{ display:flex; align-items:center; gap:12px; }
-.btn-small{ padding: 9px 18px; font-size: .82rem; }
+.btn-small{ padding: 9px 18px; font-size: .82rem; min-width: 96px; text-align:center; white-space:nowrap; }
 .auth-chip{
   display:flex; align-items:center; gap:9px;
   background:none; border:none; padding:0; cursor:pointer;
@@ -201,8 +202,8 @@ button{ font-family: inherit; cursor:pointer; }
   .brand-mark{ width:28px; height:28px; }
   .brand-word{ font-size: .82rem; letter-spacing: .02em; }
   .lang-switch{ flex-shrink:0; }
-  .lang-btn{ padding: 4px 7px; font-size:.62rem; }
-  .btn-small{ padding: 6px 10px; font-size:.72rem; }
+  .lang-btn{ padding: 4px 7px; font-size:.62rem; min-width: 30px; }
+  .btn-small{ padding: 6px 10px; font-size:.72rem; min-width: 72px; }
   .auth-avatar{ width:24px; height:24px; font-size:.7rem; }
   .nav-toggle{ padding: 5px 2px 5px 6px; gap:4px; }
   .nav-toggle span{ width:18px; }
@@ -329,7 +330,7 @@ button{ font-family: inherit; cursor:pointer; }
   position: relative;
 }
 .info-block li::before{
-  content:"—";
+  content:"вЂ”";
   position:absolute; left:0;
   color: var(--sage);
 }
