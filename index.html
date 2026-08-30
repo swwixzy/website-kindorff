@@ -1,362 +1,229 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light dark">
-<title>KINDORF — Connect. Create. Impact.</title>
-<link rel="icon" href="logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+// ===========================================================
+// KINDORF site — scroll reveal, vine progress, nav, language,
+// "How It Works" steps, and form submission messages
+// ===========================================================
 
-<div class="vine-progress" aria-hidden="true">
-  <svg viewBox="0 0 40 2000" preserveAspectRatio="none">
-    <path id="vine-path" d="M20,0 C 30,150 10,300 20,450 C 30,600 10,750 20,900 C 30,1050 10,1200 20,1350 C 30,1500 10,1650 20,1800 C 26,1900 18,1950 20,2000" />
-  </svg>
-</div>
+let currentLang = "en";
 
-<header class="site-header" id="top">
-  <div class="header-inner">
-    <a class="brand" href="#top">
-      <img src="logo.png" alt="KINDORF" class="brand-mark">
-      <span class="brand-word">KINDORF</span>
-    </a>
-    <nav class="main-nav" id="main-nav">
-      <a href="#about" data-en="About" data-ru="О нас">About</a>
-      <a href="#how-it-works" data-en="How It Works" data-ru="Как это работает">How It Works</a>
-      <a href="#submit" data-en="Submit a Project" data-ru="Предложить проект">Submit a Project</a>
-      <a href="#join" data-en="Join" data-ru="Вступить">Join</a>
-      <a href="#partnerships" data-en="Partnerships" data-ru="Партнёрство">Partnerships</a>
-      <a href="#departments" data-en="Departments" data-ru="Подразделения">Departments</a>
-    </nav>
-    <div class="lang-switch" role="group" aria-label="Language">
-      <button type="button" class="lang-btn active" data-lang="en">EN</button>
-      <button type="button" class="lang-btn" data-lang="ru">RU</button>
-    </div>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
+document.addEventListener("DOMContentLoaded", () => {
 
-<main>
+  /* ---------- mobile nav ---------- */
+  const navToggle = document.getElementById("nav-toggle");
+  const mainNav = document.getElementById("main-nav");
+  if (navToggle && mainNav) {
+    navToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+    mainNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-inner reveal">
-      <p class="eyebrow" data-en="An international project organization" data-ru="Международная проектная организация">An international project organization</p>
-      <h1 class="hero-title">
-        <span data-en="You bring the idea." data-ru="Вы приносите идею.">You bring the idea.</span>
-        <span class="accent" data-en="We help it grow." data-ru="Мы помогаем ей расти.">We help it grow.</span>
-      </h1>
-      <p class="hero-sub" data-en="KINDORF connects people with real projects to the people, teams, and partners who can make them happen — through our Management, IT, SMM / Media, Partnerships, and other departments." data-ru="KINDORF соединяет людей с реальными проектами с людьми, командами и партнёрами, которые помогут их реализовать — через наши подразделения Management, IT, SMM / Media, Partnerships и другие.">KINDORF connects people with real projects to the people, teams, and partners who can make them happen — through our Management, IT, SMM / Media, Partnerships, and other departments.</p>
-      <div class="hero-actions">
-        <a href="#submit" class="btn btn-primary" data-en="Submit a project" data-ru="Предложить проект">Submit a project</a>
-      </div>
-    </div>
-    <div class="hero-tagline reveal">
-      <span data-en="CONNECT" data-ru="СВЯЗЬ">CONNECT</span>
-      <i>·</i>
-      <span data-en="CREATE" data-ru="СОЗДАНИЕ">CREATE</span>
-      <i>·</i>
-      <span data-en="IMPACT" data-ru="ВЛИЯНИЕ">IMPACT</span>
-    </div>
-  </section>
+  /* ---------- scroll reveal ---------- */
+  const revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -60px 0px" });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add("is-visible"));
+  }
 
-  <!-- ABOUT -->
-  <section class="section about" id="about">
-    <div class="section-head reveal">
-      <p class="kicker" data-en="About Kindorf" data-ru="О Kindorf">About Kindorf</p>
-      <h2 data-en="A structure built to move around ideas — not the other way around." data-ru="Структура, построенная вокруг идей — а не наоборот.">A structure built to move around ideas — not the other way around.</h2>
-    </div>
-    <div class="about-grid">
-      <div class="about-copy reveal">
-        <p data-en="A person comes to us with an idea. We review the project, and if we take it on, KINDORF connects to its realization and provides the help it needs through our departments." data-ru="Человек приходит к нам со своей идеей. Мы рассматриваем проект, и если принимаем его, KINDORF подключается к его реализации и предоставляет необходимую помощь через наши подразделения.">A person comes to us with an idea. We review the project, and if we take it on, KINDORF connects to its realization and provides the help it needs through our departments.</p>
-        <p data-en="Our permanent departments — Management, Project Management, Research / Analytics, SMM / Media, Partnerships, IT / Technical, Design, Finance, and Legal — don't become a dedicated team for every single project. Instead, they connect to projects as needed: a study that needs to be published reaches out to Research / Analytics; a project that needs an international partner reaches Partnerships." data-ru="Наши постоянные подразделения — Management, Project Management, Research / Analytics, SMM / Media, Partnerships, IT / Technical, Design, Finance и Legal — не становятся отдельной командой для каждого проекта. Вместо этого они подключаются к проектам по мере необходимости: если проекту нужна публикация исследования — обращаются в Research / Analytics; если нужен международный партнёр — в Partnerships.">Our permanent departments — Management, Project Management, Research / Analytics, SMM / Media, Partnerships, IT / Technical, Design, Finance, and Legal — don't become a dedicated team for every single project. Instead, they connect to projects as needed: a study that needs to be published reaches out to Research / Analytics; a project that needs an international partner reaches Partnerships.</p>
-      </div>
-      <ul class="about-pillars reveal">
-        <li>
-          <h3 data-en="Purpose" data-ru="Цель">Purpose</h3>
-          <p data-en="Help people realize their own projects, rather than running projects for them." data-ru="Помогать людям реализовывать собственные проекты, а не делать проекты за них.">Help people realize their own projects, rather than running projects for them.</p>
-        </li>
-        <li>
-          <h3 data-en="Principle" data-ru="Принцип">Principle</h3>
-          <p data-en="Departments are shared infrastructure. They plug into a project only when it needs them." data-ru="Подразделения — общая инфраструктура. Они подключаются к проекту только тогда, когда он в них нуждается.">Departments are shared infrastructure. They plug into a project only when it needs them.</p>
-        </li>
-        <li>
-          <h3 data-en="Model" data-ru="Модель">Model</h3>
-          <p data-en="Idea → review → if accepted, a Project Manager and the right departments connect around it." data-ru="Идея → рассмотрение → в случае принятия к проекту подключаются Project Manager и нужные подразделения.">Idea → review → if accepted, a Project Manager and the right departments connect around it.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
+  /* ---------- growing vine scroll progress ---------- */
+  const vinePath = document.getElementById("vine-path");
+  if (vinePath) {
+    const totalLength = vinePath.getTotalLength();
+    vinePath.style.strokeDasharray = String(totalLength);
+    vinePath.style.strokeDashoffset = String(totalLength);
 
-  <!-- HOW IT WORKS -->
-  <section class="section how-it-works" id="how-it-works">
-    <div class="section-head reveal">
-      <p class="kicker" data-en="How It Works" data-ru="Как это работает">How It Works</p>
-      <h2 data-en="From idea to result, in six steps." data-ru="От идеи до результата — шесть шагов.">From idea to result, in six steps.</h2>
-      <p class="section-note" data-en="Tap or hover a step to see what happens along the way." data-ru="Нажмите или наведите курсор на этап, чтобы узнать, что происходит на каждом шаге.">Tap or hover a step to see what happens along the way.</p>
-    </div>
-    <ol class="how-steps reveal" id="how-steps"></ol>
-  </section>
+    const updateVine = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+      vinePath.style.strokeDashoffset = String(totalLength * (1 - progress));
+    };
+    updateVine();
+    window.addEventListener("scroll", updateVine, { passive: true });
+    window.addEventListener("resize", updateVine);
+  }
 
-  <!-- SUBMIT A PROJECT -->
-  <section class="section submit" id="submit">
-    <div class="section-head reveal">
-      <p class="kicker" data-en="Submit a Project" data-ru="Предложить проект">Submit a Project</p>
-      <h2 data-en="Tell us what you're building." data-ru="Расскажите, что вы создаёте.">Tell us what you're building.</h2>
-      <p class="section-note" data-en="If we take it on, we'll connect you with a Project Manager. If not, you'll hear back either way." data-ru="Если мы примем проект, мы свяжем вас с Project Manager. Если нет — вы всё равно получите ответ.">If we take it on, we'll connect you with a Project Manager. If not, you'll hear back either way.</p>
-    </div>
+  /* ---------- language switch (EN default / RU) ---------- */
+  const langButtons = document.querySelectorAll(".lang-btn");
+  const translatable = document.querySelectorAll("[data-en]");
 
-    <div class="owner-banner reveal">
-      <p data-en="The project stays yours." data-ru="Проект остаётся вашим." class="owner-banner-title">The project stays yours.</p>
-      <p data-en="You remain the Project Owner, while KINDORF provides the team, expertise, and support needed to grow and realize the idea." data-ru="Вы остаётесь Project Owner, а KINDORF предоставляет команду, экспертизу и поддержку, необходимые для развития и реализации идеи.">You remain the Project Owner, while KINDORF provides the team, expertise, and support needed to grow and realize the idea.</p>
-    </div>
+  function setLanguage(lang) {
+    currentLang = lang;
+    translatable.forEach(el => {
+      const text = el.getAttribute(`data-${lang}`);
+      if (text) el.textContent = text;
+    });
+    langButtons.forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.lang === lang);
+    });
+    document.documentElement.setAttribute("lang", lang);
+    try { localStorage.setItem("kindorf-lang", lang); } catch (e) { /* ignore */ }
 
-    <div class="info-blocks reveal">
-      <div class="info-block">
-        <h3 data-en="Who can submit a project" data-ru="Кто может подать проект">Who can submit a project</h3>
-        <ul>
-          <li data-en="Individuals" data-ru="Отдельные люди">Individuals</li>
-          <li data-en="Students" data-ru="Студенты">Students</li>
-          <li data-en="Young professionals" data-ru="Молодые специалисты">Young professionals</li>
-          <li data-en="Researchers" data-ru="Исследователи">Researchers</li>
-          <li data-en="Entrepreneurs" data-ru="Предприниматели">Entrepreneurs</li>
-          <li data-en="Public initiatives" data-ru="Общественные инициативы">Public initiatives</li>
-          <li data-en="NGOs" data-ru="НКО">NGOs</li>
-          <li data-en="Teams" data-ru="Команды">Teams</li>
-          <li data-en="International organizations" data-ru="Международные организации">International organizations</li>
-        </ul>
-      </div>
+    // re-render dynamic (JS-generated) text that isn't covered
+    // by the data-en/data-ru scan above
+    renderHowItWorks();
+  }
 
-      <div class="info-block">
-        <h3 data-en="What we support" data-ru="Что мы поддерживаем">What we support</h3>
-        <ul>
-          <li data-en="Social projects" data-ru="Социальные проекты">Social projects</li>
-          <li data-en="Education" data-ru="Образование">Education</li>
-          <li data-en="Research" data-ru="Исследования">Research</li>
-          <li data-en="Business &amp; entrepreneurship" data-ru="Бизнес и предпринимательство">Business &amp; entrepreneurship</li>
-          <li data-en="Technology" data-ru="Технологии">Technology</li>
-          <li data-en="Culture &amp; art" data-ru="Культура и искусство">Culture &amp; art</li>
-          <li data-en="Ecology" data-ru="Экология">Ecology</li>
-          <li data-en="Community development" data-ru="Развитие сообществ">Community development</li>
-          <li data-en="International initiatives" data-ru="Международные инициативы">International initiatives</li>
-        </ul>
-        <p class="info-note" data-en="Don't see your field on this list? Send us your idea anyway — we consider projects outside these categories too." data-ru="Не нашли свою сферу в этом списке? Всё равно отправьте нам идею — мы рассматриваем проекты и за пределами этих категорий.">Don't see your field on this list? Send us your idea anyway — we consider projects outside these categories too.</p>
-      </div>
+  langButtons.forEach(btn => {
+    btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
+  });
 
-      <div class="info-block">
-        <h3 data-en="What a project owner gets" data-ru="Что получает автор проекта">What a project owner gets</h3>
-        <ul>
-          <li data-en="Help with planning and organization" data-ru="Помощь в планировании и организации">Help with planning and organization</li>
-          <li data-en="Access to specialists across different professional fields" data-ru="Доступ к специалистам из разных профессиональных областей">Access to specialists across different professional fields</li>
-          <li data-en="The ability to work with international teams and specialists" data-ru="Возможность работать с международными командами и специалистами">The ability to work with international teams and specialists</li>
-          <li data-en="You don't have to try to do everything yourself — we help put together the team and the process" data-ru="Не нужно пытаться реализовать всё самостоятельно — мы помогаем организовать команду и сам процесс">You don't have to try to do everything yourself — we help put together the team and the process</li>
-        </ul>
-        <p class="info-note highlight" data-en="We keep our support model free." data-ru="Мы сохраняем нашу модель поддержки бесплатной.">We keep our support model free.</p>
-      </div>
-    </div>
+  let savedLang = "en";
+  try { savedLang = localStorage.getItem("kindorf-lang") || "en"; } catch (e) { /* ignore */ }
+  currentLang = savedLang;
 
-    <form class="kindorf-form reveal" id="submit-form">
-      <div class="form-row">
-        <label for="s-name" data-en="Your name" data-ru="Ваше имя">Your name</label>
-        <input type="text" id="s-name" name="name" required>
-      </div>
-      <div class="form-row">
-        <label for="s-project" data-en="Project name" data-ru="Название проекта">Project name</label>
-        <input type="text" id="s-project" name="project" required>
-      </div>
-      <div class="form-row">
-        <label for="s-desc" data-en="Description" data-ru="Описание">Description</label>
-        <textarea id="s-desc" name="description" rows="3" required></textarea>
-      </div>
-      <div class="form-row">
-        <label for="s-goal" data-en="Goal" data-ru="Цель">Goal</label>
-        <textarea id="s-goal" name="goal" rows="2" required></textarea>
-      </div>
-      <div class="form-grid">
-        <div class="form-row">
-          <label for="s-geo" data-en="Geography" data-ru="География">Geography</label>
-          <input type="text" id="s-geo" name="geography" required>
-        </div>
-        <div class="form-row">
-          <label for="s-dir" data-en="Direction" data-ru="Направление">Direction</label>
-          <input type="text" id="s-dir" name="direction" required>
-        </div>
-      </div>
-      <div class="form-row">
-        <label for="s-done" data-en="What's already been done" data-ru="Что уже сделано">What's already been done</label>
-        <textarea id="s-done" name="done" rows="2"></textarea>
-      </div>
-      <div class="form-row">
-        <label for="s-help" data-en="What help you need from us" data-ru="Какая помощь нужна от нас">What help you need from us</label>
-        <textarea id="s-help" name="help" rows="2" required></textarea>
-      </div>
-      <div class="form-row">
-        <label for="s-email" data-en="Email" data-ru="Email">Email</label>
-        <input type="email" id="s-email" name="email" required>
-      </div>
-      <button type="submit" class="btn btn-primary" data-en="Submit project" data-ru="Отправить проект">Submit project</button>
-      <p class="form-status" id="submit-status" role="status"></p>
-    </form>
-  </section>
+  function t(en, ru) {
+    return currentLang === "ru" ? ru : en;
+  }
 
-  <!-- JOIN KINDORF -->
-  <section class="section join" id="join">
-    <div class="section-head reveal">
-      <p class="kicker" data-en="Join Kindorf" data-ru="Присоединиться к Kindorf">Join Kindorf</p>
-      <h2 data-en="Join the team, not a single project." data-ru="Присоединяйтесь к команде, а не к одному проекту.">Join the team, not a single project.</h2>
-      <p class="section-note" data-en="For people who want to become part of KINDORF itself — its departments and day-to-day work — rather than submit their own project." data-ru="Для тех, кто хочет стать частью самой команды KINDORF — её подразделений и повседневной работы — а не предложить свой проект.">For people who want to become part of KINDORF itself — its departments and day-to-day work — rather than submit their own project.</p>
-    </div>
-    <form class="kindorf-form reveal" id="join-form">
-      <div class="form-grid">
-        <div class="form-row">
-          <label for="j-name" data-en="Your name" data-ru="Ваше имя">Your name</label>
-          <input type="text" id="j-name" name="name" required>
-        </div>
-        <div class="form-row">
-          <label for="j-email" data-en="Email" data-ru="Email">Email</label>
-          <input type="email" id="j-email" name="email" required>
-        </div>
-      </div>
-      <div class="form-row">
-        <label data-en="Department you're interested in" data-ru="Подразделение, которое вас интересует">Department you're interested in</label>
-        <div class="dept-select" role="radiogroup" aria-label="Department">
-          <input class="sr-only" type="radio" name="department" id="dept-management" value="Management" required>
-          <label class="dept-chip" for="dept-management" data-en="Management" data-ru="Management">Management</label>
+  /* =====================================================
+     HOW IT WORKS — six-step sequence, expands on
+     click/tap (all devices) or hover (pointer devices)
+  ===================================================== */
 
-          <input class="sr-only" type="radio" name="department" id="dept-pm" value="Project Management">
-          <label class="dept-chip" for="dept-pm" data-en="Project Management" data-ru="Project Management">Project Management</label>
+  const STAGES = [
+    {
+      key: "idea",
+      title: { en: "Idea", ru: "Идея" },
+      desc: {
+        en: "You come to KINDORF with your own idea or an already-existing project.",
+        ru: "Человек приходит в KINDORF со своей идеей или уже существующим проектом."
+      }
+    },
+    {
+      key: "analysis",
+      title: { en: "Analysis", ru: "Анализ" },
+      desc: {
+        en: "We study the project and define its goals, tasks, needs, and which specialists or resources it requires.",
+        ru: "Мы изучаем проект, определяем его цели, задачи, потребности и какие специалисты/ресурсы ему необходимы."
+      }
+    },
+    {
+      key: "team",
+      title: { en: "Team Formation", ru: "Формирование команды" },
+      desc: {
+        en: "A Project Manager is assigned to the project, then the necessary departments connect.",
+        ru: "За проектом закрепляется Project Manager, после чего подключаются необходимые направления проекта."
+      }
+    },
+    {
+      key: "development",
+      title: { en: "Development", ru: "Разработка" },
+      desc: {
+        en: "The team, together with the Project Owner (author), works out the plan, tasks, resources, partners, promotion and other necessary elements.",
+        ru: "Команда вместе с Project Owner (автором) прорабатывает проект: план, задачи, ресурсы, партнёров, продвижение и другие необходимые элементы."
+      }
+    },
+    {
+      key: "implementation",
+      title: { en: "Implementation", ru: "Реализация" },
+      desc: {
+        en: "The team helps the Project Owner implement the project and bring it to a concrete result.",
+        ru: "Команда помогает Project Owner реализовать проект и довести его до конкретного результата."
+      }
+    },
+    {
+      key: "result",
+      title: { en: "Result", ru: "Результат" },
+      desc: {
+        en: "The project is realized, and its result and case can be featured on the KINDORF platform.",
+        ru: "Проект реализуется, а его результат и кейс могут быть представлены на платформе KINDORF."
+      }
+    }
+  ];
 
-          <input class="sr-only" type="radio" name="department" id="dept-research" value="Research / Analytics">
-          <label class="dept-chip" for="dept-research" data-en="Research / Analytics" data-ru="Research / Analytics">Research / Analytics</label>
+  function renderHowItWorks() {
+    const container = document.getElementById("how-steps");
+    if (!container) return;
 
-          <input class="sr-only" type="radio" name="department" id="dept-smm" value="SMM / Media">
-          <label class="dept-chip" for="dept-smm" data-en="SMM / Media" data-ru="SMM / Media">SMM / Media</label>
+    // remember which steps were open before re-rendering (e.g. on language switch)
+    const openKeys = new Set(
+      Array.from(container.querySelectorAll(".how-step.is-open")).map(li => li.dataset.key)
+    );
 
-          <input class="sr-only" type="radio" name="department" id="dept-partnerships" value="Partnerships">
-          <label class="dept-chip" for="dept-partnerships" data-en="Partnerships" data-ru="Partnerships">Partnerships</label>
+    container.innerHTML = "";
+    STAGES.forEach((stage, i) => {
+      const li = document.createElement("li");
+      li.className = "how-step";
+      li.dataset.key = stage.key;
+      if (openKeys.has(stage.key)) li.classList.add("is-open");
 
-          <input class="sr-only" type="radio" name="department" id="dept-it" value="IT / Technical">
-          <label class="dept-chip" for="dept-it" data-en="IT / Technical" data-ru="IT / Technical">IT / Technical</label>
+      const isOpen = li.classList.contains("is-open");
 
-          <input class="sr-only" type="radio" name="department" id="dept-design" value="Design">
-          <label class="dept-chip" for="dept-design" data-en="Design" data-ru="Design">Design</label>
+      li.innerHTML = `
+        <button type="button" class="how-step-toggle" aria-expanded="${isOpen}">
+          <span class="how-step-num">${String(i + 1).padStart(2, "0")}</span>
+          <span class="how-step-title">${stage.title[currentLang] || stage.title.en}</span>
+          <span class="how-step-icon" aria-hidden="true"></span>
+        </button>
+        <div class="how-step-desc"><p>${stage.desc[currentLang] || stage.desc.en}</p></div>
+      `;
 
-          <input class="sr-only" type="radio" name="department" id="dept-finance" value="Finance">
-          <label class="dept-chip" for="dept-finance" data-en="Finance" data-ru="Finance">Finance</label>
+      const toggle = li.querySelector(".how-step-toggle");
+      toggle.addEventListener("click", () => {
+        const open = li.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", String(open));
+      });
 
-          <input class="sr-only" type="radio" name="department" id="dept-legal" value="Legal">
-          <label class="dept-chip" for="dept-legal" data-en="Legal" data-ru="Legal">Legal</label>
-        </div>
-      </div>
-      <div class="form-row">
-        <label for="j-note" data-en="Why you'd like to join" data-ru="Почему вы хотите присоединиться">Why you'd like to join</label>
-        <textarea id="j-note" name="note" rows="3" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary" data-en="Send" data-ru="Отправить">Send</button>
-      <p class="form-status" id="join-status" role="status"></p>
-    </form>
-  </section>
+      container.appendChild(li);
+    });
+  }
 
-  <!-- PARTNERSHIPS -->
-  <section class="section partnerships" id="partnerships">
-    <div class="section-head reveal">
-      <p class="kicker" data-en="Partnerships" data-ru="Партнёрство">Partnerships</p>
-      <h2 data-en="For organizations, not individuals." data-ru="Для организаций, а не частных лиц.">For organizations, not individuals.</h2>
-      <p class="section-note" data-en="If your organization wants to propose a collaboration with KINDORF or one of our projects, tell us here." data-ru="Если ваша организация хочет предложить сотрудничество с KINDORF или одним из наших проектов — напишите нам здесь.">If your organization wants to propose a collaboration with KINDORF or one of our projects, tell us here.</p>
-    </div>
-    <form class="kindorf-form reveal" id="partner-form">
-      <div class="form-grid">
-        <div class="form-row">
-          <label for="p-org" data-en="Organization" data-ru="Организация">Organization</label>
-          <input type="text" id="p-org" name="organization" required>
-        </div>
-        <div class="form-row">
-          <label for="p-email" data-en="Email" data-ru="Email">Email</label>
-          <input type="email" id="p-email" name="email" required>
-        </div>
-      </div>
-      <div class="form-row">
-        <label for="p-note" data-en="Proposed collaboration" data-ru="Предлагаемое сотрудничество">Proposed collaboration</label>
-        <textarea id="p-note" name="note" rows="3" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary" data-en="Send proposal" data-ru="Отправить предложение">Send proposal</button>
-      <p class="form-status" id="partner-status" role="status"></p>
-    </form>
-  </section>
+  renderHowItWorks();
+  if (savedLang === "ru") setLanguage("ru");
 
-  <!-- DEPARTMENTS -->
-  <section class="section departments" id="departments">
-    <div class="section-head reveal">
-      <p class="kicker" data-en="Departments" data-ru="Подразделения">Departments</p>
-      <h2 data-en="Shared infrastructure, on call for every project." data-ru="Общая инфраструктура, готовая подключиться к любому проекту.">Shared infrastructure, on call for every project.</h2>
-    </div>
-    <div class="dept-grid">
-      <div class="dept-card reveal">
-        <h3 data-en="Management" data-ru="Management">Management</h3>
-        <p data-en="Oversees KINDORF as an organization and supports the people behind every project." data-ru="Управляет KINDORF как организацией и поддерживает людей, стоящих за каждым проектом.">Oversees KINDORF as an organization and supports the people behind every project.</p>
-        <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
-      </div>
-      <div class="dept-card reveal">
-        <h3 data-en="Project Management" data-ru="Project Management">Project Management</h3>
-        <p data-en="Plans, coordinates, and drives projects from idea to result." data-ru="Планирует, координирует и ведёт проекты от идеи до результата.">Plans, coordinates, and drives projects from idea to result.</p>
-        <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
-      </div>
-      <div class="dept-card reveal">
-        <h3 data-en="Research / Analytics" data-ru="Research / Analytics">Research / Analytics</h3>
-        <p data-en="Researches and analyzes data to support project decisions." data-ru="Проводит исследования и анализ данных для поддержки решений по проектам.">Researches and analyzes data to support project decisions.</p>
-        <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
-      </div>
-      <div class="dept-card reveal">
-        <h3 data-en="SMM / Media" data-ru="SMM / Media">SMM / Media</h3>
-        <p data-en="Shapes how projects are told and shared across channels." data-ru="Формирует то, как проекты рассказываются и распространяются в каналах.">Shapes how projects are told and shared across channels.</p>
-        <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
-      </div>
-      <div class="dept-card reveal">
-        <h3 data-en="Partnerships" data-ru="Partnerships">Partnerships</h3>
-        <p data-en="Connects projects to partners, organizations, and international collaborations." data-ru="Связывает проекты с партнёрами, организациями и международными коллаборациями.">Connects projects to partners, organizations, and international collaborations.</p>
-        <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
-      </div>
-      <div class="dept-card reveal">
-        <h3 data-en="IT / Technical" data-ru="IT / Technical">IT / Technical</h3>
-        <p data-en="Builds and maintains the tools projects run on — sites, apps, data." data-ru="Создаёт и поддерживает инструменты, на которых работают проекты — сайты, приложения, данные.">Builds and maintains the tools projects run on — sites, apps, data.</p>
-        <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
-      </div>
-      <div class="dept-card reveal">
-        <h3 data-en="Design" data-ru="Design">Design</h3>
-        <p data-en="Shapes the visual identity and materials behind projects and KINDORF itself." data-ru="Формирует визуальную идентичность и материалы проектов и самой KINDORF.">Shapes the visual identity and materials behind projects and KINDORF itself.</p>
-        <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
-      </div>
-      <div class="dept-card reveal">
-        <h3 data-en="Finance" data-ru="Finance">Finance</h3>
-        <p data-en="Handles budgeting and financial planning for projects and the organization." data-ru="Занимается бюджетированием и финансовым планированием проектов и организации.">Handles budgeting and financial planning for projects and the organization.</p>
-        <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
-      </div>
-      <div class="dept-card reveal">
-        <h3 data-en="Legal" data-ru="Legal">Legal</h3>
-        <p data-en="Reviews legal, contractual, and compliance matters for projects." data-ru="Занимается юридическими, договорными и нормативными вопросами проектов.">Reviews legal, contractual, and compliance matters for projects.</p>
-        <span class="dept-lead" data-en="Department Lead: TBD" data-ru="Department Lead: уточняется">Department Lead: TBD</span>
-      </div>
-    </div>
-  </section>
+  /* ---------- forms: front-end only, no backend wired up yet ---------- */
+  const forms = [
+    {
+      id: "submit-form",
+      statusId: "submit-status",
+      message: {
+        en: "Thank you! Your project has been submitted. Our team will review it and contact you by email.",
+        ru: "Спасибо! Ваш проект отправлен. Наша команда рассмотрит его и свяжется с вами по email."
+      }
+    },
+    {
+      id: "join-form",
+      statusId: "join-status",
+      message: {
+        en: "Thank you! Your application has been submitted. Our team will review it and contact you by email.",
+        ru: "Спасибо! Ваша заявка отправлена. Наша команда рассмотрит её и свяжется с вами по email."
+      }
+    },
+    {
+      id: "partner-form",
+      statusId: "partner-status",
+      message: {
+        en: "Thank you! Your proposal has been submitted. Our team will review it and contact you by email.",
+        ru: "Спасибо! Ваше предложение отправлено. Наша команда рассмотрит его и свяжется с вами по email."
+      }
+    }
+  ];
 
-</main>
+  forms.forEach(({ id, statusId, message }) => {
+    const form = document.getElementById(id);
+    const status = document.getElementById(statusId);
+    if (!form || !status) return;
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <img src="logo.png" alt="KINDORF" class="footer-mark">
-      <p data-en="Connect · Create · Impact" data-ru="Connect · Create · Impact">Connect · Create · Impact</p>
-    </div>
-    <p class="footer-copy" data-en="© 2026 KINDORF. All rights reserved." data-ru="© 2026 KINDORF. Все права защищены.">© 2026 KINDORF. All rights reserved.</p>
-  </div>
-</footer>
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      status.textContent = message[currentLang] || message.en;
+      form.reset();
+    });
+  });
 
-<script src="script.js"></script>
-</body>
-</html>
+});
