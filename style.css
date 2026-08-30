@@ -25,6 +25,7 @@
 
 *{ box-sizing: border-box; }
 html{ scroll-behavior: smooth; }
+html, body{ max-width: 100%; overflow-x: hidden; }
 
 body{
   margin:0;
@@ -173,7 +174,13 @@ button{ font-family: inherit; cursor:pointer; }
 
 @media (max-width: 480px){
   .auth-name{ display:none; }
-  .header-inner{ gap: 14px; padding: 14px 18px; }
+  .header-inner{ gap: 10px; padding: 14px 16px; flex-wrap: nowrap; }
+  .brand-word{ display:none; }
+  .lang-switch{ flex-shrink:0; }
+  .lang-btn{ padding: 5px 9px; font-size:.68rem; }
+  .btn-small{ padding: 7px 12px; font-size:.78rem; }
+  .auth-avatar{ width:26px; height:26px; font-size:.74rem; }
+  .nav-toggle{ padding: 6px 2px 6px 8px; }
 }
 
 /* ---------- hero ---------- */
