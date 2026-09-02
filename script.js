@@ -186,7 +186,12 @@ document.addEventListener("DOMContentLoaded", () => {
   renderHowItWorks();
   if (savedLang === "ru") setLanguage("ru");
 
-  /* ---------- forms: front-end only, no backend wired up yet ---------- */
+  /* ---------- forms: submit data to backend, which emails it ---------- */
+
+  // АДРЕС ВАШЕГО БЭКЕНДА — после деплоя замените на реальный URL
+  // (например, "https://kindorf-backend.onrender.com/api/submit-form")
+  const BACKEND_URL = "https://formss-production.up.railway.app";
+
   const forms = [
     {
       id: "submit-form",
@@ -194,6 +199,10 @@ document.addEventListener("DOMContentLoaded", () => {
       message: {
         en: "Thank you! Your project has been submitted. Our team will review it and contact you by email.",
         ru: "Спасибо! Ваш проект отправлен. Наша команда рассмотрит его и свяжется с вами по email."
+      },
+      errorMessage: {
+        en: "Something went wrong. Please try again later.",
+        ru: "Что-то пошло не так. Попробуйте ещё раз позже."
       }
     },
     {
@@ -202,6 +211,10 @@ document.addEventListener("DOMContentLoaded", () => {
       message: {
         en: "Thank you! Your application has been submitted. Our team will review it and contact you by email.",
         ru: "Спасибо! Ваша заявка отправлена. Наша команда рассмотрит её и свяжется с вами по email."
+      },
+      errorMessage: {
+        en: "Something went wrong. Please try again later.",
+        ru: "Что-то пошло не так. Попробуйте ещё раз позже."
       }
     },
     {
@@ -210,19 +223,45 @@ document.addEventListener("DOMContentLoaded", () => {
       message: {
         en: "Thank you! Your proposal has been submitted. Our team will review it and contact you by email.",
         ru: "Спасибо! Ваше предложение отправлено. Наша команда рассмотрит его и свяжется с вами по email."
+      },
+      errorMessage: {
+        en: "Something went wrong. Please try again later.",
+        ru: "Что-то пошло не так. Попробуйте ещё раз позже."
       }
     }
   ];
 
-  forms.forEach(({ id, statusId, message }) => {
+  forms.forEach(({ id, statusId, message, errorMessage }) => {
     const form = document.getElementById(id);
     const status = document.getElementById(statusId);
     if (!form || !status) return;
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      status.textContent = message[currentLang] || message.en;
-      form.reset();
+
+      const submitBtn = form.querySelector("button[type='submit'], input[type='submit']");
+      if (submitBtn) submitBtn.disabled = true;
+
+      // собираем поля формы в обычный объект { name: value, ... }
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch(BACKEND_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ formId: id, data }),
+        });
+
+        if (!response.ok) throw new Error("Request failed");
+
+        status.textContent = message[currentLang] || message.en;
+        form.reset();
+      } catch (err) {
+        status.textContent = errorMessage[currentLang] || errorMessage.en;
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
     });
   });
 
