@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // АДРЕС ВАШЕГО БЭКЕНДА — после деплоя замените на реальный URL
   // (например, "https://kindorf-backend.onrender.com/api/submit-form")
-  const BACKEND_URL = "https://formss-production.up.railway.app/api/submit-form.";
+  const BACKEND_URL = "https://formss-production.up.railway.app/api/submit-form";
 
   const forms = [
     {
