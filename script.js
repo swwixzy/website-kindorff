@@ -186,16 +186,16 @@ document.addEventListener("DOMContentLoaded", () => {
   renderHowItWorks();
   if (savedLang === "ru") setLanguage("ru");
 
-  /* ---------- forms: submit data to backend, which emails it ---------- */
+  /* ---------- forms: submit data to Web3Forms, which emails it ---------- */
 
-  // АДРЕС ВАШЕГО БЭКЕНДА — после деплоя замените на реальный URL
-  // (например, "https://kindorf-backend.onrender.com/api/submit-form")
-  const BACKEND_URL = "https://formss-production.up.railway.app/api/submit-form";
+  const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+  const WEB3FORMS_ACCESS_KEY = "cdfc3c0c-c1c1-4312-9695-e4ae2787ce96";
 
   const forms = [
     {
       id: "submit-form",
       statusId: "submit-status",
+      subject: "KINDORF — New project submission",
       message: {
         en: "Thank you! Your project has been submitted. Our team will review it and contact you by email.",
         ru: "Спасибо! Ваш проект отправлен. Наша команда рассмотрит его и свяжется с вами по email."
@@ -208,6 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "join-form",
       statusId: "join-status",
+      subject: "KINDORF — New team application",
       message: {
         en: "Thank you! Your application has been submitted. Our team will review it and contact you by email.",
         ru: "Спасибо! Ваша заявка отправлена. Наша команда рассмотрит её и свяжется с вами по email."
@@ -220,6 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "partner-form",
       statusId: "partner-status",
+      subject: "KINDORF — New partnership proposal",
       message: {
         en: "Thank you! Your proposal has been submitted. Our team will review it and contact you by email.",
         ru: "Спасибо! Ваше предложение отправлено. Наша команда рассмотрит его и свяжется с вами по email."
@@ -231,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
-  forms.forEach(({ id, statusId, message, errorMessage }) => {
+  forms.forEach(({ id, statusId, subject, message, errorMessage }) => {
     const form = document.getElementById(id);
     const status = document.getElementById(statusId);
     if (!form || !status) return;
@@ -241,19 +243,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const submitBtn = form.querySelector("button[type='submit'], input[type='submit']");
       if (submitBtn) submitBtn.disabled = true;
+      status.textContent = "";
 
       // собираем поля формы в обычный объект { name: value, ... }
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
 
+      // Web3Forms payload: access_key + subject + все поля формы.
+      // Поле "email" из формы Web3Forms автоматически использует как reply-to.
+      const payload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject,
+        from_name: "KINDORF website",
+        ...data
+      };
+
       try {
-        const response = await fetch(BACKEND_URL, {
+        const response = await fetch(WEB3FORMS_ENDPOINT, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ formId: id, data }),
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(payload),
         });
 
-        if (!response.ok) throw new Error("Request failed");
+        const result = await response.json();
+        if (!response.ok || !result.success) throw new Error(result.message || "Request failed");
 
         status.textContent = message[currentLang] || message.en;
         form.reset();
