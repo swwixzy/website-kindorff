@@ -566,3 +566,4 @@ input:focus, textarea:focus{ border-color: var(--forest); background: var(--whit
   .reveal{ opacity:1; transform:none; transition:none; }
   #vine-path{ transition:none; }
 }
+.dept-lead { display: none; }
