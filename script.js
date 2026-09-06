@@ -23,6 +23,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  /* ---------- back to top ---------- */
+  const backToTop = document.getElementById("back-to-top");
+  if (backToTop) {
+    const toggleBackToTop = () => {
+      backToTop.classList.toggle("is-visible", window.scrollY > 400);
+    };
+    toggleBackToTop();
+    window.addEventListener("scroll", toggleBackToTop, { passive: true });
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
   /* ---------- scroll reveal ---------- */
   const revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
