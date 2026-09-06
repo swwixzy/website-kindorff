@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <span class="how-step-title">${stage.title[currentLang] || stage.title.en}</span>
           <span class="how-step-icon" aria-hidden="true"></span>
         </button>
-        <div class="how-step-desc"><p>${stage.desc[currentLang] || stage.desc.en}</p></div>
+        <div class="how-step-desc"><div class="how-step-desc-inner"><p>${stage.desc[currentLang] || stage.desc.en}</p></div></div>
       `;
 
       const toggle = li.querySelector(".how-step-toggle");
