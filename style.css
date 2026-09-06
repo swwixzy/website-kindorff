@@ -347,6 +347,7 @@ button{ font-family: inherit; cursor:pointer; }
   background:none;
   border:none;
   text-align:left;
+  touch-action: manipulation;
 }
 .how-step-num{
   flex-shrink:0;
